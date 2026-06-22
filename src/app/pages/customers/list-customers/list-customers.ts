@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { CustomerService } from '../../../services/customer/customer.service';
+import { Customer } from '../../../models/Customer';
 
 @Component({
   selector: 'app-list-customers',
@@ -6,4 +8,17 @@ import { Component } from '@angular/core';
   templateUrl: './list-customers.html',
   styleUrl: './list-customers.css',
 })
-export class ListCustomers {}
+export class ListCustomers implements OnInit {
+  private customers: Customer[] = []
+  private customerService = inject(CustomerService)
+  ngOnInit(): void {
+    this.ListCustomers();
+  }
+  ListCustomers() {
+    this.customerService.getCustomers().subscribe(data => {
+      console.log('Respuesta de la API:');
+      console.log(data);
+      this.customers = data;
+    })
+  }
+}
