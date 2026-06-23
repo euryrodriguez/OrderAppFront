@@ -10,7 +10,6 @@
     </thead>
     <tbody>
         @for (customer of customers(); track customer.id) {
-            {{ console.log('Current user data:', customer) }}
             <tr>
                 <td>{{ customer.firstName }}</td>
                 <td>{{ customer.lastName }}</td>

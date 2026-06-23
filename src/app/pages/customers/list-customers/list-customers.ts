@@ -11,15 +11,12 @@ import { Customer } from '../../../models/Customer';
 export class ListCustomers implements OnInit {
   customers = signal<Customer[]>([]);
   private customerService = inject(CustomerService);
-  protected readonly console = console; 
   
   ngOnInit(): void {
     this.ListCustomers();
   }
   ListCustomers() {
     this.customerService.getCustomers().subscribe(data => {
-      console.log('Respuesta de la API:');
-      console.log(data);
       this.customers.set(data);
     })
   }
