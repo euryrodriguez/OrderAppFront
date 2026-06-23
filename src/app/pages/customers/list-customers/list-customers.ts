@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CustomerService } from '../../../services/customer/customer.service';
 import { Customer } from '../../../models/Customer';
 
@@ -9,8 +9,10 @@ import { Customer } from '../../../models/Customer';
   styleUrl: './list-customers.css',
 })
 export class ListCustomers implements OnInit {
-  private customers: Customer[] = []
-  private customerService = inject(CustomerService)
+  customers = signal<Customer[]>([]);
+  private customerService = inject(CustomerService);
+  protected readonly console = console; 
+  
   ngOnInit(): void {
     this.ListCustomers();
   }
@@ -18,7 +20,7 @@ export class ListCustomers implements OnInit {
     this.customerService.getCustomers().subscribe(data => {
       console.log('Respuesta de la API:');
       console.log(data);
-      this.customers = data;
+      this.customers.set(data);
     })
   }
 }

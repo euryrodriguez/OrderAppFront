@@ -1,9 +1,9 @@
 export interface Customer{
-    Id?:number,
-    FirstName:string,
-    LastName:string,
-    Email:string,
-    Address:string,
-    PhoneNumber:string,
-    CreatedAt:string
+    id?:number,
+    firstName:string,
+    lastName:string,
+    email:string,
+    address:string,
+    phoneNumber:string,
+    createdAt:string
 }

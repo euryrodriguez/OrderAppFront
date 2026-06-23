@@ -1,1 +1,29 @@
-<p>list-customers works!</p>
+<h2>Listado de Clientes</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Id</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (customer of customers(); track customer.id) {
+            {{ console.log('Current user data:', customer) }}
+            <tr>
+                <td>{{ customer.firstName }}</td>
+                <td>{{ customer.lastName }}</td>
+                <td>{{ customer.email }}</td>
+                <td>
+                    <button class="btn btn-info">Update</button>
+                    <button class="btn btn-danger" style="margin-left: 10px">Delete</button>
+                </td>
+            </tr>
+        } @empty {
+            <tr>
+                <td colspan="4" class="text-center">No customers found</td>
+            </tr>
+        }
+    </tbody>
+</table>
