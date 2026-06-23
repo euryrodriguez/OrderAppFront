@@ -1,10 +1,13 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CustomerService } from '../../../services/customer/customer.service';
 import { Customer } from '../../../models/Customer';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-list-customers',
-  imports: [],
+  imports: [MatButtonModule, RouterLink, MatIconModule],
   templateUrl: './list-customers.html',
   styleUrl: './list-customers.css',
 })
