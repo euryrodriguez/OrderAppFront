@@ -4,17 +4,19 @@ import { Customer } from '../../../models/Customer';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-list-customers',
-  imports: [MatButtonModule, RouterLink, MatIconModule],
+  imports: [MatButtonModule, RouterLink, MatIconModule, MatTableModule],
   templateUrl: './list-customers.html',
   styleUrl: './list-customers.css',
 })
 export class ListCustomers implements OnInit {
   customers = signal<Customer[]>([]);
+  dtColumns = ['id', 'firstName', 'lastName', 'email', 'options']
   private customerService = inject(CustomerService);
-  
+
   ngOnInit(): void {
     this.ListCustomers();
   }
