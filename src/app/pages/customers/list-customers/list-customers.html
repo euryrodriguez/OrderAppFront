@@ -35,8 +35,8 @@
     <ng-container matColumnDef="options">
         <th mat-header-cell *matHeaderCellDef>Opciones</th>
         <td mat-cell *matCellDef="let customer">
-            <a href="#">Editar</a> &nbsp;
-            <button>Eliminar</button>
+            <a mat-flat-button routerLink="/customers/edit/{{ customer.id }}">Editar</a> &nbsp;
+            <button mat-flat-button color="warn" (click)="deleteCustomer(customer.id)">Eliminar</button>
         </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="dtColumns"></tr>

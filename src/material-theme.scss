@@ -36,3 +36,15 @@ body {
   margin: 0;
   height: 100%;
 }
+
+$theme: mat.define-theme((
+  // Your theme configuration...
+));
+
+html {
+  // Apply the core theme
+  @include mat.all-component-themes($theme);
+  
+  // CRITICAL: Include this mixin to restore color="warn" functionality
+  @include mat.color-variants-backwards-compatibility($theme);
+}

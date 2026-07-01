@@ -25,4 +25,7 @@ export class ListCustomers implements OnInit {
       this.customers.set(data);
     })
   }
+  deleteCustomer(id: number) {
+    console.log(`Deleting customer with id: ${id}`);
+  }
 }
