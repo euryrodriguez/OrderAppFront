@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { AlertService } from '../../../shared/services/alert';
 
 @Component({
   selector: 'app-list-customers',
@@ -14,15 +15,20 @@ import { MatTableModule } from '@angular/material/table';
 })
 export class ListCustomers implements OnInit {
   customers = signal<Customer[]>([]);
+  
   dtColumns = ['id', 'firstName', 'lastName', 'email', 'options']
-  private customerService = inject(CustomerService);
+  
+  private readonly alertService = inject(AlertService);
+  private readonly customerService = inject(CustomerService);
 
   ngOnInit(): void {
     this.ListCustomers();
   }
   ListCustomers() {
+    this.alertService.loading('Cargando clientes...');
     this.customerService.getCustomers().subscribe(data => {
       this.customers.set(data);
+      this.alertService.close();
     })
   }
   deleteCustomer(id: number) {

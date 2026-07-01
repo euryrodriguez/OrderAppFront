@@ -1,3 +1,16 @@
 a{
     margin-left: 1rem;
 }
+/* 1. Definimos el comportamiento y tamaño del formulario */
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;             /* Espacio vertical limpio entre campos */
+  width: 100%;           /* Ocupa el 100% del espacio del componente padre */
+  max-width: 500px;      /* Ancho máximo para que no se deforme en pantallas grandes */
+}
+
+/* 2. Forzamos a que TODOS los mat-form-field dentro adopten el ancho del formulario */
+.customer-form mat-form-field {
+  width: 100%;
+}

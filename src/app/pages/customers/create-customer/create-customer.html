@@ -1,10 +1,36 @@
 <h2>Crear Nuevo Cliente</h2>
 
-<form (submit)="saveCustomer()" [formGroup]="createForm">
-    <mat-form-field appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input [formControl]="createForm.controls.firstName" matInput>
-    </mat-form-field>
+<form (ngSubmit)="saveCustomer()" [formGroup]="createForm" class="customer-form">
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input [formControl]="createForm.controls.firstName" matInput>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input [formControl]="createForm.controls.lastName" matInput>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Correo Electrónico</mat-label>
+            <input [formControl]="createForm.controls.email" matInput>
+        </mat-form-field>
+    </div>
+        <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Celular</mat-label>
+            <input [formControl]="createForm.controls.phoneNumber" matInput>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Dirección</mat-label>
+            <input [formControl]="createForm.controls.address" matInput>
+        </mat-form-field>
+    </div>
     <div>
         <button type="submit" mat-flat-button>Guardar Cambios</button>
         <a mat-stroked-button routerLink="/customers">Cancelar</a>
